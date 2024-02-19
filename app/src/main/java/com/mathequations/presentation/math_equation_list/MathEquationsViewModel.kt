@@ -80,7 +80,7 @@ class MathEquationsViewModel @Inject constructor(
     }
 
     fun getMathOperationsTitles(): List<String> {
-        return mathEquationUseCases.getMathOperationsUseCase().map { it.sign() }
+        return mathEquationUseCases.getMathOperationsUseCase().map { it.sign }
     }
 }
 

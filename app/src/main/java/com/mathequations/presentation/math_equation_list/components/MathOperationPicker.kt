@@ -29,7 +29,7 @@ fun MathOperationPicker(
     ) {
         SingleChoiceSegmentedButton(
             items = viewModel.getMathOperationsTitles(),
-            selectedItem = viewModel.state.value.mathOperation.sign()
+            selectedItem = viewModel.state.value.mathOperation.sign
         ) { viewModel.onEvent(MathEquationsEvent.SelectMathOperation(it)) }
 
         CheckboxList(

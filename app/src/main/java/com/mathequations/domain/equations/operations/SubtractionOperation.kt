@@ -5,16 +5,13 @@ import com.mathequations.domain.filters.subtraction.SubtractionNegativeResultFil
 import com.mathequations.domain.filters.subtraction.SubtractionPositiveResultFilter
 
 class SubtractionOperation : MathOperation(
+    sign = "-",
     filters = listOf(
         SubtractionExcludeZeroResultFilter(),
         SubtractionNegativeResultFilter(),
         SubtractionPositiveResultFilter(),
     )
 ) {
-    override fun sign(): String {
-        return "-"
-    }
-
     override fun calculate(firstNumber: Int, secondNumber: Int): Int {
         return firstNumber - secondNumber
     }

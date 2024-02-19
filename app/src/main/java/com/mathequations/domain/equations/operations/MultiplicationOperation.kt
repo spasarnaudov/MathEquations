@@ -5,16 +5,13 @@ import com.mathequations.domain.filters.common.NegativeNumbersFilter
 import com.mathequations.domain.filters.common.PositiveNumbersFilter
 
 class MultiplicationOperation : MathOperation(
+    sign = "*",
     filters = listOf(
         ExcludeZeroNumbersFilter(),
         NegativeNumbersFilter(),
         PositiveNumbersFilter(),
     )
 ) {
-    override fun sign(): String {
-        return "*"
-    }
-
     override fun calculate(firstNumber: Int, secondNumber: Int) : Int {
         return firstNumber * secondNumber
     }
