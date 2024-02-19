@@ -9,6 +9,9 @@ open class AdditionByPassingTheTenthFilter : AbstractEquationFilter(
         if (firstNumber % 10 + secondNumber % 10 >= 10) {
             return true
         }
+        if (firstNumber % 10 + secondNumber % 10 <= -10) {
+            return true
+        }
         if (firstNumber / 10 == 0 || secondNumber / 10 == 0) {
             return false
         }
