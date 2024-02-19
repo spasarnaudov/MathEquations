@@ -1,7 +1,6 @@
 package com.mathequations.presentation.math_equation_list
 
 import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,7 +10,6 @@ import com.mathequations.domain.equations.operations.DivisionOperation
 import com.mathequations.domain.equations.operations.MathOperation
 import com.mathequations.domain.equations.operations.MultiplicationOperation
 import com.mathequations.domain.equations.operations.SubtractionOperation
-import com.mathequations.domain.filters.IEquationFilter
 import com.mathequations.domain.model.NumbersInterval
 import com.mathequations.domain.use_case.MathEquationUseCases
 import com.mathequations.domain.util.MathEquationsEvent

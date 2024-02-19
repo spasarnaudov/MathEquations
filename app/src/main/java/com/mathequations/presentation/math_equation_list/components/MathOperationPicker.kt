@@ -33,7 +33,7 @@ fun MathOperationPicker(
         ) { viewModel.onEvent(MathEquationsEvent.SelectMathOperation(it)) }
 
         CheckboxList(
-            items = viewModel.state.value.mathOperation.filters.map { it.toString() },
+            items = viewModel.state.value.mathOperation.filters.map { it.name },
             onSelectItem = { viewModel.onEvent(MathEquationsEvent.SelectMathFilter(it)) }
         )
         

@@ -2,8 +2,7 @@ package com.mathequations.domain.use_case
 
 import com.mathequations.common.Resource
 import com.mathequations.domain.equations.operations.MathOperation
-import com.mathequations.domain.filters.IEquationFilter
-import com.mathequations.domain.repository.IMathEquationRepository
+import com.mathequations.domain.filters.AbstractEquationFilter
 import com.mathequations.domain.model.MathEquation
 import com.mathequations.domain.model.NumbersInterval
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +14,7 @@ class GenerateMathEquationsUseCase {
         firstNumbersInterval: NumbersInterval,
         secondNumbersInterval: NumbersInterval,
         mathOperations: List<MathOperation>,
-        equationFilters: List<IEquationFilter>? = null
+        equationFilters: List<AbstractEquationFilter>? = null
     ): Flow<Resource<List<MathEquation>>> = flow {
         val equations: ArrayList<MathEquation> = ArrayList()
         mathOperations.forEach { mathOperation ->
@@ -35,7 +34,7 @@ class GenerateMathEquationsUseCase {
         emit(Resource.Success(equations))
     }
 
-    private fun filter(equationFilters: List<IEquationFilter>?, firstNumber: Int, secondNumber: Int) : Boolean {
+    private fun filter(equationFilters: List<AbstractEquationFilter>?, firstNumber: Int, secondNumber: Int) : Boolean {
         if (equationFilters?.isEmpty() == false) {
             for (equationFilter in equationFilters) {
                 if (!equationFilter.filter(firstNumber, secondNumber)) {

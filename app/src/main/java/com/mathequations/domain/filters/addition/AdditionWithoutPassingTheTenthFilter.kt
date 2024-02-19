@@ -1,11 +1,17 @@
 package com.mathequations.domain.filters.addition
 
-class AdditionWithoutPassingTheTenthFilter : AdditionByPassingTheTenthFilter() {
-    override fun filter(firstNumber: Int, secondNumber: Int) : Boolean {
-        return !super.filter(firstNumber, secondNumber)
-    }
+import com.mathequations.domain.filters.AbstractEquationFilter
 
-    override fun toString(): String {
-        return "Addition Without Passing The Tenth"
+class AdditionWithoutPassingTheTenthFilter : AbstractEquationFilter(
+    name = "Addition Without Passing The Tenth",
+) {
+    override fun filter(firstNumber: Int, secondNumber: Int) : Boolean {
+        if (firstNumber % 10 + secondNumber % 10 >= 10) {
+            return false
+        }
+        if (firstNumber / 10 == 0 || secondNumber / 10 == 0) {
+            return true
+        }
+        return !filter(firstNumber / 10, secondNumber / 10)
     }
 }

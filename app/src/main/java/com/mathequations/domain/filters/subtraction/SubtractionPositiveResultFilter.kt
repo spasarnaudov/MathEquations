@@ -1,13 +1,11 @@
 package com.mathequations.domain.filters.subtraction
 
-import com.mathequations.domain.filters.IEquationFilter
+import com.mathequations.domain.filters.AbstractEquationFilter
 
-class SubtractionPositiveResultFilter : IEquationFilter {
+class SubtractionPositiveResultFilter : AbstractEquationFilter(
+    name = "Subtraction Positive Result"
+) {
     override fun filter(firstNumber: Int, secondNumber: Int): Boolean {
         return firstNumber - secondNumber >= 0
-    }
-
-    override fun toString(): String {
-        return "Subtraction Positive Result"
     }
 }
