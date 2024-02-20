@@ -1,4 +1,4 @@
-package com.mathequations.di
+package com.di
 
 import com.mathequations.domain.use_case.GenerateMathEquationsUseCase
 import com.mathequations.domain.use_case.GetFiltersByNamesUseCase

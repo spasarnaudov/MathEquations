@@ -1,4 +1,4 @@
-package com.number_generator.domain.use_case
+package com.mathequations.domain.use_case
 
 import kotlin.random.Random
 

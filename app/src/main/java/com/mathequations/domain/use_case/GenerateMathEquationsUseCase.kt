@@ -1,6 +1,6 @@
 package com.mathequations.domain.use_case
 
-import com.mathequations.common.Resource
+import com.core.Resource
 import com.mathequations.domain.equations.operations.MathOperation
 import com.mathequations.domain.filters.AbstractEquationFilter
 import com.mathequations.domain.model.MathEquation

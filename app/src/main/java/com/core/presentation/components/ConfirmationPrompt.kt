@@ -1,4 +1,4 @@
-package com.components
+package com.core.presentation.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

@@ -4,7 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mathequations.common.Resource
+import com.core.Resource
 import com.mathequations.domain.equations.operations.AdditionOperation
 import com.mathequations.domain.equations.operations.DivisionOperation
 import com.mathequations.domain.equations.operations.MathOperation

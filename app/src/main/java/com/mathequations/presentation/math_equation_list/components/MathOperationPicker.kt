@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.mathequations.presentation.math_equation_list.MathEquationsViewModel
-import com.components.CheckboxList
+import com.core.presentation.components.CheckboxList
 import com.mathequations.domain.util.MathEquationsEvent
 
 @Composable

@@ -1,5 +1,6 @@
 package com.number_generator.domain.use_case
 
+import com.mathequations.domain.use_case.SelectiveNumberGenerator
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
