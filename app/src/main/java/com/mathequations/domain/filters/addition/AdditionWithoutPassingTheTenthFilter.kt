@@ -7,6 +7,6 @@ class AdditionWithoutPassingTheTenthFilter : AbstractEquationFilter(
     name = "Addition Without Passing The Tenth",
 ) {
     override fun filter(firstNumber: Int, secondNumber: Int) : Boolean {
-        return MathUtils.nonPassingTheTenth(firstNumber, secondNumber)
+        return !MathUtils.passingTheTenth(firstNumber, secondNumber)
     }
 }
