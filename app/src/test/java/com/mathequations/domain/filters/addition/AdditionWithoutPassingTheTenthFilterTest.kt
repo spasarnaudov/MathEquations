@@ -16,25 +16,25 @@ class AdditionWithoutPassingTheTenthFilterTest {
 
     @Test
     fun `test without passing the tenth`() {
-        assertTrue(MathUtils.nonPassingTheTenth(1, 1)) // 1 + 1 = 2
+        assertTrue(filter.filter(1, 1)) // 1 + 1 = 2
 
-        assertTrue(MathUtils.nonPassingTheTenth(-1, -1)) // -1 + -1 = -2
+        assertTrue(filter.filter(-1, -1)) // -1 + -1 = -2
 
-        assertTrue(MathUtils.nonPassingTheTenth(7, -5)) // 7 + -5 = 2
-        assertFalse(MathUtils.nonPassingTheTenth(5, -7)) // 5 + -7 = -2
+        assertTrue(filter.filter(7, -5)) // 7 + -5 = 2
+        assertFalse(filter.filter(5, -7)) // 5 + -7 = -2
 
-        assertTrue(MathUtils.nonPassingTheTenth(-7, 5)) // -7 + 5 = -2
-        assertFalse(MathUtils.nonPassingTheTenth(-5, 7)) // -5 + 7 = 2
+        assertTrue(filter.filter(-7, 5)) // -7 + 5 = -2
+        assertFalse(filter.filter(-5, 7)) // -5 + 7 = 2
 
-        assertTrue(MathUtils.nonPassingTheTenth(21, 21)) // 21 + 21 = 42
+        assertTrue(filter.filter(21, 21)) // 21 + 21 = 42
 
-        assertTrue(MathUtils.nonPassingTheTenth(-21, -21)) // -21 + -21 = -42
+        assertTrue(filter.filter(-21, -21)) // -21 + -21 = -42
 
-        assertTrue(MathUtils.nonPassingTheTenth(27, -25)) // 27 + -25 = 2
-        assertFalse(MathUtils.nonPassingTheTenth(25, -27)) // 25 + -27 = -2
+        assertTrue(filter.filter(27, -25)) // 27 + -25 = 2
+        assertFalse(filter.filter(25, -27)) // 25 + -27 = -2
 
-        assertTrue(MathUtils.nonPassingTheTenth(-27, 25)) // -27 + 25 = -2
-        assertFalse(MathUtils.nonPassingTheTenth(-25, 27)) // -25 + 27 = 2
+        assertTrue(filter.filter(-27, 25)) // -27 + 25 = -2
+        assertFalse(filter.filter(-25, 27)) // -25 + 27 = 2
     }
 
 }

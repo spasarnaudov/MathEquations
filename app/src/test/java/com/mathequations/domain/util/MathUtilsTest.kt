@@ -6,7 +6,7 @@ import org.junit.Test
 class MathUtilsTest {
 
     @Test
-    fun `test passing the tenth`() {
+    fun `test addition with passing the tenth`() {
         assertFalse(MathUtils.passingTheTenth(1, 1)) // 1 + 1 = 2
 
         assertFalse(MathUtils.passingTheTenth(-1, -1)) // -1 + -1 = -2
@@ -29,26 +29,23 @@ class MathUtilsTest {
     }
 
     @Test
-    fun `test without passing the tenth`() {
-        assertTrue(MathUtils.nonPassingTheTenth(1, 1)) // 1 + 1 = 2
+    fun `test subtraction with borrowing`() {
+        assertTrue(MathUtils.isSubtractionWithBorrowing(1555, 556))
+        assertTrue(MathUtils.isSubtractionWithBorrowing(1555, 565))
+        assertTrue(MathUtils.isSubtractionWithBorrowing(1555, 655))
+        assertFalse(MathUtils.isSubtractionWithBorrowing(1556, 555))
+        assertFalse(MathUtils.isSubtractionWithBorrowing(1565, 555))
+        assertFalse(MathUtils.isSubtractionWithBorrowing(1655, 555))
+        assertFalse(MathUtils.isSubtractionWithBorrowing(500, 500))
 
-        assertTrue(MathUtils.nonPassingTheTenth(-1, -1)) // -1 + -1 = -2
+        assertTrue(MathUtils.isSubtractionWithBorrowing(-21, -15))
+        assertTrue(MathUtils.isSubtractionWithBorrowing(-11, -25))
 
-        assertTrue(MathUtils.nonPassingTheTenth(7, -5)) // 7 + -5 = 2
-        assertFalse(MathUtils.nonPassingTheTenth(5, -7)) // 5 + -7 = -2
+        assertFalse(MathUtils.isSubtractionWithBorrowing(21, -15))
+        assertFalse(MathUtils.isSubtractionWithBorrowing(11, -25))
 
-        assertTrue(MathUtils.nonPassingTheTenth(-7, 5)) // -7 + 5 = -2
-        assertFalse(MathUtils.nonPassingTheTenth(-5, 7)) // -5 + 7 = 2
-
-        assertTrue(MathUtils.nonPassingTheTenth(21, 21)) // 21 + 21 = 42
-
-        assertTrue(MathUtils.nonPassingTheTenth(-21, -21)) // -21 + -21 = -42
-
-        assertTrue(MathUtils.nonPassingTheTenth(27, -25)) // 27 + -25 = 2
-        assertFalse(MathUtils.nonPassingTheTenth(25, -27)) // 25 + -27 = -2
-
-        assertTrue(MathUtils.nonPassingTheTenth(-27, 25)) // -27 + 25 = -2
-        assertFalse(MathUtils.nonPassingTheTenth(-25, 27)) // -25 + 27 = 2
+        assertFalse(MathUtils.isSubtractionWithBorrowing(-21, 15))
+        assertFalse(MathUtils.isSubtractionWithBorrowing(-11, 25))
     }
 
 }

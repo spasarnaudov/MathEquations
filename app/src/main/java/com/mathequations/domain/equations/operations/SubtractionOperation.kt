@@ -1,15 +1,21 @@
 package com.mathequations.domain.equations.operations
 
-import com.mathequations.domain.filters.subtraction.SubtractionExcludeZeroResultFilter
-import com.mathequations.domain.filters.subtraction.SubtractionNegativeResultFilter
-import com.mathequations.domain.filters.subtraction.SubtractionPositiveResultFilter
+import com.mathequations.domain.filters.subtraction.SubtractionLeadingToNonZeroResultFilter
+import com.mathequations.domain.filters.subtraction.SubtractionLeadingToZeroResultFilter
+import com.mathequations.domain.filters.subtraction.SubtractionLeadingToNegativeResultFilter
+import com.mathequations.domain.filters.subtraction.SubtractionLeadingToPositiveResultFilter
+import com.mathequations.domain.filters.subtraction.SubtractionWithBorrowingFilter
+import com.mathequations.domain.filters.subtraction.SubtractionWithoutBorrowingFilter
 
 class SubtractionOperation : MathOperation(
     sign = "-",
     filters = listOf(
-        SubtractionExcludeZeroResultFilter(),
-        SubtractionNegativeResultFilter(),
-        SubtractionPositiveResultFilter(),
+        SubtractionWithBorrowingFilter(),
+        SubtractionWithoutBorrowingFilter(),
+        SubtractionLeadingToZeroResultFilter(),
+        SubtractionLeadingToNonZeroResultFilter(),
+        SubtractionLeadingToNegativeResultFilter(),
+        SubtractionLeadingToPositiveResultFilter(),
     )
 ) {
     override fun calculate(firstNumber: Int, secondNumber: Int): Int {
