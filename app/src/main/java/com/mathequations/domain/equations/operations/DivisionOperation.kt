@@ -1,11 +1,11 @@
 package com.mathequations.domain.equations.operations
 
-import com.mathequations.domain.filters.division.DivisionWithZeroRemainderFilter
+import com.mathequations.domain.filters.division.ExactDivisionFilter
 
 class DivisionOperation : MathOperation(
     sign = "/",
     filters = listOf(
-        DivisionWithZeroRemainderFilter(),
+        ExactDivisionFilter(),
     )
 ) {
     override fun calculate(firstNumber: Int, secondNumber: Int) : Int {
@@ -14,7 +14,5 @@ class DivisionOperation : MathOperation(
 
     override fun filter(firstNumber: Int, secondNumber: Int): Boolean {
         return secondNumber == 0
-            || secondNumber > firstNumber
-            || firstNumber % secondNumber != 0
     }
 }

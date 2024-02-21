@@ -1,15 +1,11 @@
 package com.mathequations.domain.equations.operations
 
-import com.mathequations.domain.filters.common.ExcludeZeroNumbersFilter
-import com.mathequations.domain.filters.common.NegativeNumbersFilter
-import com.mathequations.domain.filters.common.PositiveNumbersFilter
+import com.mathequations.domain.filters.multiplication.MultiplicationSquareNumbersFilter
 
 class MultiplicationOperation : MathOperation(
     sign = "*",
     filters = listOf(
-        ExcludeZeroNumbersFilter(),
-        NegativeNumbersFilter(),
-        PositiveNumbersFilter(),
+        MultiplicationSquareNumbersFilter(),
     )
 ) {
     override fun calculate(firstNumber: Int, secondNumber: Int) : Int {
