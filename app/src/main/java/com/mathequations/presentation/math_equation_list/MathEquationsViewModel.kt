@@ -40,10 +40,9 @@ class MathEquationsViewModel @Inject constructor(
                 generateMathEquations()
             }
             is MathEquationsEvent.SelectMathFilter -> {
-                val filters = mathEquationUseCases.getFiltersByNames(event.filters, state.value.mathOperation.filters)
                 _state.value = MathEquationsListState(
                     mathOperation = state.value.mathOperation,
-                    filters = filters
+                    filters = event.filters
                 )
                 generateMathEquations()
             }

@@ -8,7 +8,7 @@ import com.mathequations.domain.model.MathEquation
 data class MathEquationsListState(
     val isLoading: Boolean = false,
     val mathOperation: MathOperation = AdditionOperation(),
-    val filters: List<AbstractEquationFilter>? = null,
+    val filters: List<AbstractEquationFilter> = emptyList(),
     val mathEquations: List<MathEquation> = emptyList(),
     val error: String = ""
 )

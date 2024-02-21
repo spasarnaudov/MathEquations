@@ -86,13 +86,7 @@ class MainActivity : ComponentActivity() {
                                 },
                                 sheetState = sheetState,
                             ) {
-                                MathOperationPicker(viewModel) {
-                                    scope.launch { sheetState.hide() }.invokeOnCompletion {
-                                        if (!sheetState.isVisible) {
-                                            showBottomSheet = false
-                                        }
-                                    }
-                                }
+                                MathOperationPicker()
                             }
                         }
                     }
