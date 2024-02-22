@@ -33,18 +33,18 @@ These instructions will get you a copy of the project up and running on your loc
 ## Features
 
 - **Arithmetic Operations**: Practice addition, subtraction, multiplication, and division with customizable difficulty levels.
-- **Filters**:
-- Addition By Passing The Tenth
-- Addition Without Passing The Tenth
-- Exact Division
-- Multiplication Square Numbers
-- Subtraction Leading To Negative Resul
-- Subtraction Leading To Non Zero Result
-- Subtraction Leading To Positive Result
-- Subtraction Leading To Zero Result
-- Subtraction With Borrowing
-- Subtraction Without Borrowing
-- ...more filters to come.
+* **Filters**:
+  - Addition By Passing The Tenth
+  - Addition Without Passing The Tenth
+  - Exact Division
+  - Multiplication Square Numbers
+  - Subtraction Leading To Negative Resul
+  - Subtraction Leading To Non Zero Result
+  - Subtraction Leading To Positive Result
+  - Subtraction Leading To Zero Result
+  - Subtraction With Borrowing
+  - Subtraction Without Borrowing
+  - ...more filters to come.
 
 ## Usage
 
