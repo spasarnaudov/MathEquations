@@ -33,10 +33,10 @@ These instructions will get you a copy of the project up and running on your loc
 ## Features
 
 * **Arithmetic Operations**:
-  - addition
-  - subtraction
-  - multiplication
-  - division
+  - Addition
+  - Subtraction
+  - Multiplication
+  - Division
 * **Filters**:
   - Addition By Passing The Tenth
   - Addition Without Passing The Tenth
