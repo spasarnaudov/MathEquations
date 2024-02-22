@@ -17,27 +17,27 @@ class GenerateMathEquationsUseCase {
         equationFilters: List<AbstractEquationFilter>? = null
     ): Flow<Resource<List<MathEquation>>> = flow {
         val equations: ArrayList<MathEquation> = ArrayList()
+        val skipFilters = equationFilters.isNullOrEmpty()
         mathOperations.forEach { mathOperation ->
             for (firstNumber in firstNumbersInterval.start..firstNumbersInterval.end step firstNumbersInterval.step) {
                 for (secondNumber in secondNumbersInterval.start..secondNumbersInterval.end step secondNumbersInterval.step) {
                     if (mathOperation.filter(firstNumber, secondNumber)) {
                         continue
                     }
-                    if (filter(equationFilters, firstNumber, secondNumber)) {
-                        continue
+                    if (skipFilters || isFilterFound(equationFilters, firstNumber, secondNumber)) {
+                        val equation = MathEquation(mathOperation, firstNumber, secondNumber)
+                        equations.add(equation)
                     }
-                    val equation = MathEquation(mathOperation, firstNumber, secondNumber)
-                    equations.add(equation)
                 }
             }
         }
         emit(Resource.Success(equations))
     }
 
-    private fun filter(equationFilters: List<AbstractEquationFilter>?, firstNumber: Int, secondNumber: Int) : Boolean {
+    private fun isFilterFound(equationFilters: List<AbstractEquationFilter>?, firstNumber: Int, secondNumber: Int) : Boolean {
         if (equationFilters?.isEmpty() == false) {
             for (equationFilter in equationFilters) {
-                if (!equationFilter.filter(firstNumber, secondNumber)) {
+                if (equationFilter.filter(firstNumber, secondNumber)) {
                     return true
                 }
             }
