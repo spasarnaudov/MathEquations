@@ -32,7 +32,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Features
 
-- **Arithmetic Operations**: Practice addition, subtraction, multiplication, and division with customizable difficulty levels.
+* **Arithmetic Operations**:
+  - addition
+  - subtraction
+  - multiplication
+  - division
 * **Filters**:
   - Addition By Passing The Tenth
   - Addition Without Passing The Tenth
