@@ -4,6 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.core.Constants
 import com.core.Resource
 import com.mathequations.domain.equations.operations.AdditionOperation
 import com.mathequations.domain.equations.operations.DivisionOperation
@@ -83,10 +84,10 @@ class MathEquationsViewModel @Inject constructor(
 
 fun mathOperationFromString(sign: String): MathOperation {
     return when(sign) {
-        "+" -> AdditionOperation()
-        "-" -> SubtractionOperation()
-        "*" -> MultiplicationOperation()
-        "/" -> DivisionOperation()
+        Constants.SIGN_ADDITION -> AdditionOperation()
+        Constants.SIGN_SUBTRACTION -> SubtractionOperation()
+        Constants.SIGN_MULTIPLICATION -> MultiplicationOperation()
+        Constants.SIGN_DIVISION -> DivisionOperation()
         else -> AdditionOperation()
     }
 }

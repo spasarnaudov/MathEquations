@@ -1,8 +1,7 @@
-package com.mathequations.data.remote.dto
+package com.mathequations.data.remote
 
 import com.mathequations.domain.model.MathEquation
 
 interface MathEquationsApi {
     fun getMathEquations(): List<MathEquation>
-//    fun getMathEquation(): MathEquation
 }

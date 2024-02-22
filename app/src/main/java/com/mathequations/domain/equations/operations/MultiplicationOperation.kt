@@ -1,9 +1,10 @@
 package com.mathequations.domain.equations.operations
 
+import com.core.Constants
 import com.mathequations.domain.filters.multiplication.MultiplicationSquareNumbersFilter
 
 class MultiplicationOperation : MathOperation(
-    sign = "*",
+    sign = Constants.SIGN_MULTIPLICATION,
     filters = listOf(
         MultiplicationSquareNumbersFilter(),
     )

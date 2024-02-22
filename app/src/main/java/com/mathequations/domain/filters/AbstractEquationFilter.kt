@@ -1,3 +1,5 @@
 package com.mathequations.domain.filters
 
-abstract class AbstractEquationFilter(val name: String): IEquationFilter
+import androidx.annotation.StringRes
+
+abstract class AbstractEquationFilter(@StringRes val name: Int): IEquationFilter

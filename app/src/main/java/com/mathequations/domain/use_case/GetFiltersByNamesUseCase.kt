@@ -1,5 +1,6 @@
 package com.mathequations.domain.use_case
 
+import android.content.res.Resources
 import com.mathequations.domain.filters.AbstractEquationFilter
 
 class GetFiltersByNamesUseCase {
@@ -8,7 +9,7 @@ class GetFiltersByNamesUseCase {
             it.value
         }
         return allFilters.filter {
-            selectedFilters2.contains(it.name)
+            selectedFilters2.contains(Resources.getSystem().getString(it.name))
         }
     }
 }

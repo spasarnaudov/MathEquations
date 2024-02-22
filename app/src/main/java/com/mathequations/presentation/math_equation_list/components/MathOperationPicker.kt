@@ -24,16 +24,16 @@ fun MathOperationPicker(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        FilterCheckList(
+            filters = viewModel.state.value.mathOperation.filters,
+            selectedFilters = viewModel.state.value.filters,
+        ) { viewModel.onEvent(MathEquationsEvent.SelectMathFilter(it)) }
+
         SingleChoiceSegmentedButton(
             items = viewModel.getMathOperationsTitles(),
             selectedItem = viewModel.state.value.mathOperation.sign
         ) { viewModel.onEvent(MathEquationsEvent.SelectMathOperation(it)) }
 
-        FilterCheckList(
-            filters = viewModel.state.value.mathOperation.filters,
-            selectedFilters = viewModel.state.value.filters,
-        ) { viewModel.onEvent(MathEquationsEvent.SelectMathFilter(it)) }
-        
         Spacer(modifier = Modifier
             .fillMaxWidth()
             .height(24.dp))
