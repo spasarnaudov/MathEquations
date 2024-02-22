@@ -66,7 +66,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-- **[Spas Arnaudov]([Your GitHub Profile Link](https://github.com/spasarnaudov))** - *Initial work*
+- **[Spas Arnaudov]((https://github.com/spasarnaudov))** - *Initial work*
 
 See also the list of [contributors](https://github.com/spasarnaudov/MathEquations/contributors) who participated in this project.
 
