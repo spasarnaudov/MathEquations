@@ -1,7 +1,6 @@
 package com.di
 
 import com.mathequations.domain.use_case.GenerateMathEquationsUseCase
-import com.mathequations.domain.use_case.GetFiltersByNamesUseCase
 import com.mathequations.domain.use_case.GetMathOperationsUseCase
 import com.mathequations.domain.use_case.MathEquationUseCases
 import dagger.Module
@@ -20,7 +19,6 @@ object AppModule {
         return MathEquationUseCases(
             generateMathEquationsUseCase = GenerateMathEquationsUseCase(),
             getMathOperationsUseCase = GetMathOperationsUseCase(),
-            getFiltersByNames = GetFiltersByNamesUseCase(),
         )
     }
 
