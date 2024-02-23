@@ -13,7 +13,7 @@ class DivisionOperation : MathOperation(
         return firstNumber / secondNumber
     }
 
-    override fun filter(firstNumber: Int, secondNumber: Int): Boolean {
-        return secondNumber == 0
+    override fun isValidOperation(firstNumber: Int, secondNumber: Int): Boolean {
+        return secondNumber != 0
     }
 }

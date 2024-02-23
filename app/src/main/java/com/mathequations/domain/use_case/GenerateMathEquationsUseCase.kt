@@ -21,7 +21,7 @@ class GenerateMathEquationsUseCase {
         mathOperations.forEach { mathOperation ->
             for (firstNumber in firstNumbersInterval.start..firstNumbersInterval.end step firstNumbersInterval.step) {
                 for (secondNumber in secondNumbersInterval.start..secondNumbersInterval.end step secondNumbersInterval.step) {
-                    if (mathOperation.filter(firstNumber, secondNumber)) {
+                    if (!mathOperation.isValidOperation(firstNumber, secondNumber)) {
                         continue
                     }
                     if (skipFilters || isFilterFound(equationFilters, firstNumber, secondNumber)) {

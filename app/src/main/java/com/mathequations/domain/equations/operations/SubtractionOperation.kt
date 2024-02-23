@@ -22,8 +22,4 @@ class SubtractionOperation : MathOperation(
     override fun calculate(firstNumber: Int, secondNumber: Int): Int {
         return firstNumber - secondNumber
     }
-
-    override fun filter(firstNumber: Int, secondNumber: Int): Boolean {
-        return false
-    }
 }
