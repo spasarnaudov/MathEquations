@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.mathequations.R
 import com.mathequations.presentation.math_equation_list.MathEquationsViewModel
 import com.mathequations.domain.equations.formats.EquationItemFormatter
 import com.mathequations.presentation.math_equation_list.components.EquationItemsList
@@ -69,11 +70,14 @@ class MainActivity : ComponentActivity() {
                     ) {
                         Column {
                             Text(
-                                modifier = Modifier.fillMaxWidth()
+                                modifier = Modifier
+                                    .fillMaxWidth()
                                     .padding(8.dp),
-                                text = "Count ${viewModel.state.value.mathEquations.size}",
-                                textAlign = TextAlign.Center,
-                                fontSize = 30.sp
+                                text = getString(
+                                    R.string.count_items,
+                                    "${viewModel.state.value.mathEquations.size}"
+                                ),
+                                textAlign = TextAlign.End,
                             )
                             EquationItemsList(
                                 EquationItemFormatter()

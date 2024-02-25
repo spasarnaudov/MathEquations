@@ -1,7 +1,10 @@
 <resources>
 	<string name="app_name">MathEquations</string>
+
+	<!--	math equations	-->
 	<string name="addition_by_passing_the_tenth">Addition By Passing The Tenth</string>
 	<string name="addition_without_passing_the_tenth">Addition Without Passing The Tenth</string>
+	<string name="count_items">Count: %1$s</string>
 	<string name="exact_division">Exact Division</string>
 	<string name="multiplication_square_numbers">Multiplication Square Numbers</string>
 	<string name="subtraction_leading_to_negative_result">Subtraction Leading To Negative Result</string>
