@@ -1,23 +1,20 @@
 package com.mathequations.presentation.math_equation_list.components
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Switch
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.core.presentation.components.SingleChoiceSegmentedButton
-import com.mathequations.R
+import com.core.presentation.components.DropDownMenu
 import com.mathequations.presentation.math_equation_list.MathEquationsEvent
 import com.mathequations.presentation.math_equation_list.MathEquationsViewModel
 
@@ -32,32 +29,36 @@ fun IntervalPicker(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        SingleChoiceSegmentedButton(
-            items = listOf(
+        Row(
+            modifier = Modifier
+                .horizontalScroll(rememberScrollState())
+        ) {
+            val interval = listOf(
+                "-300",
+                "-100",
+                "-20",
+                "0",
                 "20",
                 "100",
-//                "1000",
-            ),
-            selectedItem = viewModel.state.value.interval.toString()
-        ) { viewModel.onEvent(MathEquationsEvent.SelectInterval(it.toInt())) }
-
-        var isChecked by remember { mutableStateOf(viewModel.state.value.negativeNumbers) }
-
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(16.dp)
-        ) {
-            // Text label displaying the current state of the switch
-            Text(stringResource(R.string.add_negative_numbers))
-
-            // The switch itself
-            Switch(
-                checked = isChecked,
-                onCheckedChange = {
-                    isChecked = it
-                    viewModel.onEvent(MathEquationsEvent.SelectSwitchNegative(it))
-                }
+                "300",
             )
+            DropDownMenu(
+                title = "Start",
+                list = interval,
+                defaultValue = viewModel.state.value.negativeInterval.toString(),
+                modifier = Modifier.width(150.dp),
+                ) {
+                viewModel.onEvent(MathEquationsEvent.SelectNegativeInterval(it.toInt()))
+            }
+            Spacer(modifier = Modifier.width(10.dp))
+            DropDownMenu(
+                title = "End",
+                list = interval,
+                defaultValue = viewModel.state.value.positiveInterval.toString(),
+                modifier = Modifier.width(150.dp),
+            ) {
+                viewModel.onEvent(MathEquationsEvent.SelectPositiveInterval(it.toInt()))
+            }
         }
     }
 }

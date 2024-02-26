@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,6 +19,7 @@ import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -65,23 +65,7 @@ class MainActivity : ComponentActivity() {
                             }
                         },
                     ) {
-                        Column(
-                            modifier = Modifier.fillMaxSize(),
-                        ) {
-                            Text(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(8.dp),
-                                text = getString(
-                                    R.string.count_items,
-                                    "${viewModel.state.value.mathEquations.size}"
-                                ),
-                                textAlign = TextAlign.End,
-                            )
-                            EquationItemsList(
-                                EquationItemFormatter()
-                            )
-                        }
+                        MainContent()
                         if (showBottomSheet) {
                             ModalBottomSheet(
                                 dragHandle = {},
@@ -89,17 +73,43 @@ class MainActivity : ComponentActivity() {
                                     showBottomSheet = false
                                 },
                             ) {
-                                FilterCheckList(
-                                    filters = viewModel.state.value.mathOperation.filters,
-                                    selectedFilters = viewModel.state.value.filters,
-                                ) { viewModel.onEvent(MathEquationsEvent.SelectFilter(it)) }
-                                OperationPicker()
-                                IntervalPicker()
+                                BottomSheetContent()
                             }
                         }
                     }
                 }
             }
         }
+    }
+
+    @Composable
+    fun MainContent() {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                text = getString(
+                    R.string.count_items,
+                    "${viewModel.state.value.mathEquations.size}"
+                ),
+                textAlign = TextAlign.End,
+            )
+            EquationItemsList(
+                EquationItemFormatter()
+            )
+        }
+    }
+
+    @Composable
+    fun BottomSheetContent() {
+        FilterCheckList(
+            filters = viewModel.state.value.mathOperation.filters,
+            selectedFilters = viewModel.state.value.filters,
+        ) { viewModel.onEvent(MathEquationsEvent.SelectFilter(it)) }
+        OperationPicker()
+        IntervalPicker()
     }
 }

@@ -20,8 +20,7 @@ fun FilterCheckList(
     LazyColumn(
         modifier = Modifier
             .fillMaxWidth()
-            .wrapContentHeight()
-            .padding(bottom = 16.dp),
+            .wrapContentHeight(),
     ) {
         items(filters) { filter ->
             CheckListItem(filter.name, filter in selectedFilters) { selected ->

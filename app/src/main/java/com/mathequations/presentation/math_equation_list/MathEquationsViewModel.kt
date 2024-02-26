@@ -48,16 +48,15 @@ class MathEquationsViewModel @Inject constructor(
                 )
                 generateMathEquations()
             }
-            is MathEquationsEvent.SelectInterval -> {
+            is MathEquationsEvent.SelectNegativeInterval -> {
                 _state.value = state.value.copy(
-                    interval = event.interval
+                    negativeInterval = event.interval
                 )
                 generateMathEquations()
             }
-
-            is MathEquationsEvent.SelectSwitchNegative -> {
+            is MathEquationsEvent.SelectPositiveInterval -> {
                 _state.value = state.value.copy(
-                    negativeNumbers = event.negativeNumbers
+                    positiveInterval = event.interval
                 )
                 generateMathEquations()
             }
@@ -65,8 +64,8 @@ class MathEquationsViewModel @Inject constructor(
     }
 
     private fun generateMathEquations() {
-        val start = if (state.value.negativeNumbers) -1 * state.value.interval else 0
-        val end = state.value.interval
+        val start = state.value.negativeInterval
+        val end = state.value.positiveInterval
         val interval = NumbersInterval(start, end)
         mathEquationUseCases.generateMathEquationsUseCase(
             interval,

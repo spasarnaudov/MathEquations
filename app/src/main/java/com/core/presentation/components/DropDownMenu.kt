@@ -2,8 +2,8 @@ package com.core.presentation.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
@@ -28,6 +28,8 @@ import androidx.compose.ui.unit.toSize
 fun DropDownMenu(
     title: String,
     list: List<String>,
+    defaultValue: String = "",
+    modifier: Modifier = Modifier,
     iconExpanded: ImageVector = Icons.Filled.KeyboardArrowUp,
     iconNonExpanded: ImageVector = Icons.Filled.KeyboardArrowDown,
     onClick: (String) -> Unit
@@ -36,7 +38,7 @@ fun DropDownMenu(
         mutableStateOf(false)
     }
     var selectedItem by remember {
-        mutableStateOf(list[0])
+        mutableStateOf(defaultValue)
     }
     var textFiledSize by remember {
         mutableStateOf(Size.Zero)
@@ -52,8 +54,8 @@ fun DropDownMenu(
             value = selectedItem,
             readOnly = true,
             onValueChange = { selectedItem = it },
-            modifier = Modifier
-                .fillMaxWidth()
+            modifier = modifier
+                .wrapContentHeight()
                 .onGloballyPositioned { coordinates ->
                     textFiledSize = coordinates.size.toSize()
                 },
