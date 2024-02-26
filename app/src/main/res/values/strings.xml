@@ -16,4 +16,5 @@
 	<string name="interval">Interval</string>
 	<string name="filters">Filters</string>
 	<string name="operations">Operations</string>
+	<string name="add_negative_numbers">Add negative numbers</string>
 </resources>

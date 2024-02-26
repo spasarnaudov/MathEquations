@@ -32,28 +32,41 @@ class MathEquationsViewModel @Inject constructor(
     fun onEvent(event: MathEquationsEvent) {
         when(event) {
             is MathEquationsEvent.SelectOperation -> {
-                _state.value = MathEquationsListState(mathOperation = mathOperationFromString(event.operation))
+                _state.value = state.value.copy(
+                    mathOperation = mathOperationFromString(event.operation),
+                    filters = emptyList(),
+                )
                 generateMathEquations()
             }
             is MathEquationsEvent.GenerateMathOperation -> {
                 generateMathEquations()
             }
             is MathEquationsEvent.SelectFilter -> {
-                _state.value = MathEquationsListState(
+                _state.value = state.value.copy(
                     mathOperation = state.value.mathOperation,
                     filters = event.filters
                 )
                 generateMathEquations()
             }
             is MathEquationsEvent.SelectInterval -> {
+                _state.value = state.value.copy(
+                    interval = event.interval
+                )
+                generateMathEquations()
+            }
 
+            is MathEquationsEvent.SelectSwitchNegative -> {
+                _state.value = state.value.copy(
+                    negativeNumbers = event.negativeNumbers
+                )
+                generateMathEquations()
             }
         }
     }
 
     private fun generateMathEquations() {
-        val start = -20
-        val end = 20
+        val start = if (state.value.negativeNumbers) -1 * state.value.interval else 0
+        val end = state.value.interval
         val interval = NumbersInterval(start, end)
         mathEquationUseCases.generateMathEquationsUseCase(
             interval,
@@ -63,10 +76,11 @@ class MathEquationsViewModel @Inject constructor(
         ).onEach { result ->
             when(result) {
                 is Resource.Success -> {
-                    _state.value = MathEquationsListState(
+                    _state.value = state.value.copy(
                         mathOperation = state.value.mathOperation,
                         filters = state.value.filters,
-                        mathEquations = result.data ?: emptyList())
+                        mathEquations = result.data ?: emptyList()
+                    )
                 }
                 is Resource.Error -> {
                     _state.value = MathEquationsListState(error = result.message ?: "An unexpected error occured")
