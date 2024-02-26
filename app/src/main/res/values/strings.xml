@@ -13,4 +13,7 @@
 	<string name="subtraction_leading_to_zero_result">Subtraction Leading To Zero Result</string>
 	<string name="subtraction_with_borrowing">Subtraction With Borrowing</string>
 	<string name="subtraction_without_borrowing">Subtraction Without Borrowing</string>
+	<string name="interval">Interval</string>
+	<string name="filters">Filters</string>
+	<string name="operations">Operations</string>
 </resources>

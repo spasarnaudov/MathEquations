@@ -2,7 +2,7 @@ package com.di
 
 import com.mathequations.domain.use_case.GenerateMathEquationsUseCase
 import com.mathequations.domain.use_case.GetMathOperationsUseCase
-import com.mathequations.domain.use_case.MathEquationUseCases
+import com.mathequations.domain.model.MathEquationUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

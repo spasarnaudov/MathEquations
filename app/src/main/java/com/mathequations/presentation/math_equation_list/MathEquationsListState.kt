@@ -1,4 +1,4 @@
-package com.mathequations.domain.util
+package com.mathequations.presentation.math_equation_list
 
 import com.mathequations.domain.equations.operations.AdditionOperation
 import com.mathequations.domain.equations.operations.MathOperation

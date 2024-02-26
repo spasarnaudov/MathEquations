@@ -12,9 +12,7 @@ import com.mathequations.domain.equations.operations.MathOperation
 import com.mathequations.domain.equations.operations.MultiplicationOperation
 import com.mathequations.domain.equations.operations.SubtractionOperation
 import com.mathequations.domain.model.NumbersInterval
-import com.mathequations.domain.use_case.MathEquationUseCases
-import com.mathequations.domain.util.MathEquationsEvent
-import com.mathequations.domain.util.MathEquationsListState
+import com.mathequations.domain.model.MathEquationUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -33,19 +31,22 @@ class MathEquationsViewModel @Inject constructor(
 
     fun onEvent(event: MathEquationsEvent) {
         when(event) {
-            is MathEquationsEvent.SelectMathOperation -> {
+            is MathEquationsEvent.SelectOperation -> {
                 _state.value = MathEquationsListState(mathOperation = mathOperationFromString(event.operation))
                 generateMathEquations()
             }
             is MathEquationsEvent.GenerateMathOperation -> {
                 generateMathEquations()
             }
-            is MathEquationsEvent.SelectMathFilter -> {
+            is MathEquationsEvent.SelectFilter -> {
                 _state.value = MathEquationsListState(
                     mathOperation = state.value.mathOperation,
                     filters = event.filters
                 )
                 generateMathEquations()
+            }
+            is MathEquationsEvent.SelectInterval -> {
+
             }
         }
     }

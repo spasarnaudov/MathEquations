@@ -1,4 +1,4 @@
-package com.mathequations.presentation.math_equation_list.components
+package com.core.presentation.components
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.horizontalScroll
@@ -15,7 +15,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import com.mathequations.domain.equations.operations.MathOperation
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnrememberedMutableState")
 @OptIn(ExperimentalMaterial3Api::class)
