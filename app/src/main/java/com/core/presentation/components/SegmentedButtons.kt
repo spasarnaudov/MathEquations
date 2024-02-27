@@ -28,8 +28,8 @@ fun SingleChoiceSegmentedButton(
         mutableIntStateOf(items.indexOf(selectedItem))
     }
     Row(
-//        modifier = Modifier
-//            .horizontalScroll(rememberScrollState())
+        modifier = Modifier
+            .horizontalScroll(rememberScrollState())
     ) {
         SingleChoiceSegmentedButtonRow {
             items.forEachIndexed { index, item ->
