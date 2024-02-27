@@ -25,6 +25,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.core.Constants
 import com.mathequations.R
 import com.mathequations.presentation.math_equation_list.MathEquationsViewModel
 import com.mathequations.domain.equations.formats.EquationItemFormatter
@@ -33,7 +34,7 @@ import com.mathequations.presentation.math_equation_list.components.EquationItem
 import com.mathequations.presentation.math_equation_list.components.FilterCheckList
 import com.mathequations.presentation.math_equation_list.components.IntervalPicker
 import com.mathequations.presentation.math_equation_list.components.OperationPicker
-import com.mathequations.ui.theme.MathEquationsTheme
+import com.mathequations.presentation.ui.theme.MathEquationsTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -93,7 +94,7 @@ class EquationGeneratorActivity : ComponentActivity() {
             Text(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(8.dp),
+                    .padding(Constants.Dimens.smallPadding),
                 text = getString(
                     R.string.count_items,
                     "${viewModel.state.value.mathEquations.size}"

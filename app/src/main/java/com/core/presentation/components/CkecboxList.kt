@@ -13,7 +13,7 @@ import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.mathequations.presentation.math_equation_list.MathEquationsViewModel
+import com.core.Constants
 
 val checkboxStates = mutableStateMapOf<String, Boolean>().withDefault { false }
 
@@ -36,7 +36,7 @@ fun CheckboxList(
                         checkboxStates[item] = it
                         onSelectItem.invoke(checkboxStates)
                     }
-                    .padding(16.dp),
+                    .padding(Constants.Dimens.mediumPadding),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(

@@ -12,9 +12,12 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.core.Constants
 import com.core.presentation.components.DropDownMenu
+import com.mathequations.R
 import com.mathequations.presentation.math_equation_list.MathEquationsEvent
 import com.mathequations.presentation.math_equation_list.MathEquationsViewModel
 
@@ -25,7 +28,7 @@ fun IntervalPicker(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = 24.dp),
+            .padding(bottom = Constants.Dimens.largePadding),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -33,32 +36,44 @@ fun IntervalPicker(
             modifier = Modifier
                 .horizontalScroll(rememberScrollState())
         ) {
-            val interval = listOf(
-                "-300",
-                "-100",
-                "-20",
-                "0",
-                "20",
-                "100",
-                "300",
-            )
-            DropDownMenu(
-                title = "Start",
-                list = interval,
+            IntervalDropdown(
+                title = stringResource(R.string.start),
                 defaultValue = viewModel.state.value.negativeInterval.toString(),
-                modifier = Modifier.width(150.dp),
-                ) {
+            ) {
                 viewModel.onEvent(MathEquationsEvent.SelectNegativeInterval(it.toInt()))
             }
-            Spacer(modifier = Modifier.width(10.dp))
-            DropDownMenu(
-                title = "End",
-                list = interval,
+            IntervalDropdown(
+                title = stringResource(R.string.end),
                 defaultValue = viewModel.state.value.positiveInterval.toString(),
-                modifier = Modifier.width(150.dp),
             ) {
                 viewModel.onEvent(MathEquationsEvent.SelectPositiveInterval(it.toInt()))
             }
         }
     }
+}
+
+@Composable
+fun IntervalDropdown(
+    title: String,
+    defaultValue: String = "",
+    onClick: (String) -> Unit
+) {
+    val interval = listOf(
+        "-300",
+        "-100",
+        "-20",
+        "0",
+        "20",
+        "100",
+        "300",
+    )
+    DropDownMenu(
+        title = title,
+        list = interval,
+        defaultValue = defaultValue,
+        modifier = Modifier
+            .padding(horizontal = Constants.Dimens.smallPadding)
+            .width(150.dp),
+        onClick = onClick
+    )
 }

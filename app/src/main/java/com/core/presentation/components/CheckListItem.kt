@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
+import com.core.Constants
 
 @Composable
 fun CheckListItem(
@@ -30,13 +30,13 @@ fun CheckListItem(
             ) {
                 onSelectionChanged.invoke(it)
             }
-            .padding(16.dp),
+            .padding(Constants.Dimens.smallPadding),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Checkbox(
             modifier = Modifier
                 .wrapContentSize()
-                .padding(end = 16.dp),
+                .padding(end = Constants.Dimens.smallPadding),
             checked = isSelected,
             onCheckedChange = null
         )

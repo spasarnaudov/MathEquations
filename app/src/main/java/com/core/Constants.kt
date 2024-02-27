@@ -1,5 +1,7 @@
 package com.core
 
+import androidx.compose.ui.unit.dp
+
 class Constants {
 
     companion object {
@@ -9,4 +11,9 @@ class Constants {
         const val SIGN_DIVISION = "/"
     }
 
+    object Dimens {
+        val smallPadding = 8.dp
+        val mediumPadding = 16.dp
+        val largePadding = 24.dp
+    }
 }

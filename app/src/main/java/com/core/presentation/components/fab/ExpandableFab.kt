@@ -15,7 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.unit.dp
+import com.core.Constants
 import com.core.presentation.model.fab.FabItem
 
 @Composable
@@ -49,12 +49,12 @@ fun ExpandableFab(
                             setExpanded(false)
                             onFABClick.invoke(fabItem.id)
                         },
-                        modifier = Modifier.padding(bottom = 8.dp)
+                        modifier = Modifier.padding(bottom = Constants.Dimens.smallPadding)
                             .align(Alignment.End)
                     ) {
                         if (fabItem.text.isNotEmpty()) {
                             Text(
-                                modifier = Modifier.padding(horizontal = 16.dp),
+                                modifier = Modifier.padding(horizontal = Constants.Dimens.mediumPadding),
                                 text = fabItem.text
                             )
                         }

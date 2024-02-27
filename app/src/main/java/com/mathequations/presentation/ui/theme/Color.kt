@@ -1,4 +1,4 @@
-package com.mathequations.ui.theme
+package com.mathequations.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

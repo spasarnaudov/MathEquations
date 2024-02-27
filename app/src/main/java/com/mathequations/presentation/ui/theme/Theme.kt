@@ -1,4 +1,4 @@
-package com.mathequations.ui.theme
+package com.mathequations.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

@@ -16,8 +16,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.core.Constants
 import com.mathequations.presentation.math_equation_list.MathEquationsViewModel
 import com.mathequations.domain.equations.formats.IEquationFormatter
 
@@ -29,26 +29,26 @@ fun EquationItemsList(
     val state = viewModel.state.value
     Box(modifier = Modifier
         .fillMaxSize()
-        .padding(bottom = 8.dp)) {
+        .padding(bottom = Constants.Dimens.smallPadding)) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             itemsIndexed(state.mathEquations) { i, mathEquation ->
                 Row(
                     modifier = Modifier
                         .fillMaxSize()
                         .clickable { }
-                        .padding(8.dp)
+                        .padding(Constants.Dimens.smallPadding)
                 ) {
                     Text(
                         text = "${i + 1}.",
                         modifier = Modifier
-                            .padding(horizontal = 8.dp),
+                            .padding(horizontal = Constants.Dimens.smallPadding),
                     )
                     Text(
                         text = equationFormatter.format(mathEquation),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(end = 8.dp),
+                            .padding(end = Constants.Dimens.smallPadding),
                     )
                 }
 
@@ -61,7 +61,7 @@ fun EquationItemsList(
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 20.dp)
+                    .padding(horizontal = Constants.Dimens.smallPadding)
                     .align(Alignment.Center)
             )
         }

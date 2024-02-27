@@ -7,8 +7,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.core.Constants
 import com.core.presentation.components.SingleChoiceSegmentedButton
 import com.mathequations.presentation.math_equation_list.MathEquationsEvent
 import com.mathequations.presentation.math_equation_list.MathEquationsViewModel
@@ -20,7 +20,7 @@ fun OperationPicker(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(Constants.Dimens.smallPadding),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
