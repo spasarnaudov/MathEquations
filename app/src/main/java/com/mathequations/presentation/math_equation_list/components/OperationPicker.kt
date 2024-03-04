@@ -10,6 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.core.Constants
 import com.core.presentation.components.SingleChoiceSegmentedButton
+import com.core.presentation.model.SegmentedButtonItem
+import com.mathequations.domain.equations.operations.MathOperation
 import com.mathequations.presentation.math_equation_list.MathEquationsEvent
 import com.mathequations.presentation.math_equation_list.MathEquationsViewModel
 
@@ -20,13 +22,14 @@ fun OperationPicker(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(Constants.Dimens.smallPadding),
+            .padding(Constants.Padding.SMALL),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        val items: List<SegmentedButtonItem<MathOperation>> = viewModel.getMathOperations()
         SingleChoiceSegmentedButton(
-            items = viewModel.getMathOperationsTitles(),
-            selectedItem = viewModel.state.value.mathOperation.sign
+            items = items,
+            selectedItem = items[0]
         ) { viewModel.onEvent(MathEquationsEvent.SelectOperation(it)) }
     }
 }

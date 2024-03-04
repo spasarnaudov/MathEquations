@@ -15,14 +15,15 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import com.core.presentation.model.SegmentedButtonItem
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnrememberedMutableState")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SingleChoiceSegmentedButton(
-    items: List<String>,
-    selectedItem: String = "",
-    onSelectItem: (String) -> Unit
+fun <T>SingleChoiceSegmentedButton(
+    items: List<SegmentedButtonItem<T>>,
+    selectedItem: SegmentedButtonItem<T>? = null,
+    onSelectItem: (SegmentedButtonItem<T>) -> Unit
 ) {
     var selectedIndex by remember {
         mutableIntStateOf(items.indexOf(selectedItem))
@@ -44,7 +45,7 @@ fun SingleChoiceSegmentedButton(
                         count = items.size
                     )
                 ) {
-                    Text(text = item)
+                    Text(text = item.name)
                 }
             }
         }

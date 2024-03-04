@@ -30,13 +30,13 @@ fun CheckListItem(
             ) {
                 onSelectionChanged.invoke(it)
             }
-            .padding(Constants.Dimens.smallPadding),
+            .padding(Constants.Padding.SMALL),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Checkbox(
             modifier = Modifier
                 .wrapContentSize()
-                .padding(end = Constants.Dimens.smallPadding),
+                .padding(end = Constants.Padding.SMALL),
             checked = isSelected,
             onCheckedChange = null
         )

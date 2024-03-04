@@ -29,26 +29,26 @@ fun EquationItemsList(
     val state = viewModel.state.value
     Box(modifier = Modifier
         .fillMaxSize()
-        .padding(bottom = Constants.Dimens.smallPadding)) {
+        .padding(bottom = Constants.Padding.SMALL)) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             itemsIndexed(state.mathEquations) { i, mathEquation ->
                 Row(
                     modifier = Modifier
                         .fillMaxSize()
                         .clickable { }
-                        .padding(Constants.Dimens.smallPadding)
+                        .padding(Constants.Padding.SMALL)
                 ) {
                     Text(
                         text = "${i + 1}.",
                         modifier = Modifier
-                            .padding(horizontal = Constants.Dimens.smallPadding),
+                            .padding(horizontal = Constants.Padding.SMALL),
                     )
                     Text(
                         text = equationFormatter.format(mathEquation),
                         fontWeight = FontWeight.Bold,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(end = Constants.Dimens.smallPadding),
+                            .padding(end = Constants.Padding.SMALL),
                     )
                 }
 
@@ -61,7 +61,7 @@ fun EquationItemsList(
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = Constants.Dimens.smallPadding)
+                    .padding(horizontal = Constants.Padding.SMALL)
                     .align(Alignment.Center)
             )
         }

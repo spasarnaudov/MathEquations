@@ -94,7 +94,7 @@ class EquationGeneratorActivity : ComponentActivity() {
             Text(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(Constants.Dimens.smallPadding),
+                    .padding(Constants.Padding.SMALL),
                 text = getString(
                     R.string.count_items,
                     "${viewModel.state.value.mathEquations.size}"

@@ -4,13 +4,9 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.core.Constants
 import com.core.Resource
-import com.mathequations.domain.equations.operations.AdditionOperation
-import com.mathequations.domain.equations.operations.DivisionOperation
+import com.core.presentation.model.SegmentedButtonItem
 import com.mathequations.domain.equations.operations.MathOperation
-import com.mathequations.domain.equations.operations.MultiplicationOperation
-import com.mathequations.domain.equations.operations.SubtractionOperation
 import com.mathequations.domain.model.NumbersInterval
 import com.mathequations.domain.model.MathEquationUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -33,7 +29,7 @@ class MathEquationsViewModel @Inject constructor(
         when(event) {
             is MathEquationsEvent.SelectOperation -> {
                 _state.value = state.value.copy(
-                    mathOperation = mathOperationFromString(event.operation),
+                    mathOperation = event.operation.item,
                     filters = emptyList(),
                 )
                 generateMathEquations()
@@ -50,13 +46,7 @@ class MathEquationsViewModel @Inject constructor(
             }
             is MathEquationsEvent.SelectNegativeInterval -> {
                 _state.value = state.value.copy(
-                    negativeInterval = event.interval
-                )
-                generateMathEquations()
-            }
-            is MathEquationsEvent.SelectPositiveInterval -> {
-                _state.value = state.value.copy(
-                    positiveInterval = event.interval
+                    interval = event.interval.item
                 )
                 generateMathEquations()
             }
@@ -64,44 +54,41 @@ class MathEquationsViewModel @Inject constructor(
     }
 
     private fun generateMathEquations() {
-        val start = state.value.negativeInterval
-        val end = state.value.positiveInterval
-        val interval = NumbersInterval(start, end)
-        mathEquationUseCases.generateMathEquationsUseCase(
-            interval,
-            interval,
-            listOf(state.value.mathOperation),
-            _state.value.filters
-        ).onEach { result ->
-            when(result) {
-                is Resource.Success -> {
-                    _state.value = state.value.copy(
-                        mathOperation = state.value.mathOperation,
-                        filters = state.value.filters,
-                        mathEquations = result.data ?: emptyList()
-                    )
+        if(state.value.interval != null) {
+            mathEquationUseCases.generateMathEquationsUseCase(
+                state.value.interval!!,
+                state.value.interval!!,
+                listOf(state.value.mathOperation),
+                _state.value.filters
+            ).onEach { result ->
+                when (result) {
+                    is Resource.Success -> {
+                        _state.value = state.value.copy(
+                            mathOperation = state.value.mathOperation,
+                            filters = state.value.filters,
+                            mathEquations = result.data ?: emptyList()
+                        )
+                    }
+
+                    is Resource.Error -> {
+                        _state.value = MathEquationsListState(
+                            error = result.message ?: "An unexpected error occured"
+                        )
+                    }
+
+                    is Resource.Loading -> {
+                        _state.value = MathEquationsListState(isLoading = true)
+                    }
                 }
-                is Resource.Error -> {
-                    _state.value = MathEquationsListState(error = result.message ?: "An unexpected error occured")
-                }
-                is Resource.Loading -> {
-                    _state.value = MathEquationsListState(isLoading = true)
-                }
-            }
-        }.launchIn(viewModelScope)
+            }.launchIn(viewModelScope)
+        }
     }
 
-    fun getMathOperationsTitles(): List<String> {
-        return mathEquationUseCases.getMathOperationsUseCase().map { it.sign }
+    fun getMathOperations(): List<SegmentedButtonItem<MathOperation>> {
+        return mathEquationUseCases.getMathOperationsUseCase()
     }
-}
 
-fun mathOperationFromString(sign: String): MathOperation {
-    return when(sign) {
-        Constants.SIGN_ADDITION -> AdditionOperation()
-        Constants.SIGN_SUBTRACTION -> SubtractionOperation()
-        Constants.SIGN_MULTIPLICATION -> MultiplicationOperation()
-        Constants.SIGN_DIVISION -> DivisionOperation()
-        else -> AdditionOperation()
+    fun getIntervals(): List<SegmentedButtonItem<NumbersInterval>> {
+        return mathEquationUseCases.getIntervalsUseCase()
     }
 }

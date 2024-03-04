@@ -1,10 +1,10 @@
 package com.mathequations.domain.equations.operations
 
-import com.core.Constants
+import com.mathequations.Constants
 import com.mathequations.domain.filters.division.ExactDivisionFilter
 
 class DivisionOperation : MathOperation(
-    sign = Constants.SIGN_DIVISION,
+    sign = Constants.MathSign.SIGN_DIVISION,
     filters = listOf(
         ExactDivisionFilter(),
     )

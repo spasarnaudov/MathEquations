@@ -36,7 +36,7 @@ fun CheckboxList(
                         checkboxStates[item] = it
                         onSelectItem.invoke(checkboxStates)
                     }
-                    .padding(Constants.Dimens.mediumPadding),
+                    .padding(Constants.Padding.MEDIUM),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(

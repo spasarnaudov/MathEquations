@@ -49,12 +49,12 @@ fun ExpandableFab(
                             setExpanded(false)
                             onFABClick.invoke(fabItem.id)
                         },
-                        modifier = Modifier.padding(bottom = Constants.Dimens.smallPadding)
+                        modifier = Modifier.padding(bottom = Constants.Padding.SMALL)
                             .align(Alignment.End)
                     ) {
                         if (fabItem.text.isNotEmpty()) {
                             Text(
-                                modifier = Modifier.padding(horizontal = Constants.Dimens.mediumPadding),
+                                modifier = Modifier.padding(horizontal = Constants.Padding.MEDIUM),
                                 text = fabItem.text
                             )
                         }
